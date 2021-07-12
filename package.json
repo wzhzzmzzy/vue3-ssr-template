@@ -1,0 +1,53 @@
+{
+  "name": "vue-ssr-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {
+    "dev": "node ./cli.js dev",
+    "build": "node ./cli.js build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vue/server-renderer": "^3.1.4",
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^2.0.1",
+    "serve-favicon": "^2.5.0",
+    "vue": "^3.1.4",
+    "vue-router": "^4.0.10",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@vue/babel-plugin-jsx": "^1.0.6",
+    "@vue/compiler-sfc": "^3.1.4",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-import": "^1.13.3",
+    "core-js": "^3.15.2",
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "ignore-loader": "^0.1.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "path-to-regexp": "^6.2.0",
+    "postcss-discard-comments": "^5.0.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^6.1.1",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-safe-parser": "^6.0.0",
+    "terser-webpack-plugin": "^5.1.4",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^16.3.0",
+    "webpack": "^5.43.0",
+    "webpack-chain": "^6.5.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-manifest-plugin": "^3.1.1",
+    "webpackbar": "^5.0.0-3",
+    "yargs": "^17.0.1"
+  }
+}
