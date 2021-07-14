@@ -79,8 +79,9 @@ const getClientWebpack = chain => {
     })
 
   chain.plugin('define').use(webpack.DefinePlugin, [{
-    __isBrowser__: true
-    // __VUE_OPTIONS_API__: false // 配置后与 vuex 集成有bug，暂时不打开
+    __isBrowser__: true,
+    __VUE_OPTIONS_API__: false,
+    __VUE_PROD_DEVTOOLS__: false
   }])
 
   chain.plugin('manifest').use(WebpackManifestPlugin, [{

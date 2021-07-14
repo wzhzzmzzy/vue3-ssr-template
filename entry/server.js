@@ -1,4 +1,6 @@
 import { h, createSSRApp } from 'vue';
+import { createHead } from '@vueuse/head';
+// import devalue from '@nuxt/devalue';
 import { createRouter, createStore } from './plugins';
 import { findRoute } from "./utils";
 import { Layout, App, routes } from '../src/routes';
@@ -9,6 +11,7 @@ const serverRender = async (req, config) => {
   global.__VUE_PROD_DEVTOOLS__ = global.__VUE_PROD_DEVTOOLS__ || false
   const router = createRouter();
   const store = createStore();
+  const head = createHead();
   const path = req.path;
   const { cssOrder, jsOrder } = config;
   const routeItem = findRoute(routes, path);
@@ -42,7 +45,9 @@ const serverRender = async (req, config) => {
         { req, config },
         {
           children: () => h(App),
-          initialData: () => h('script', { innerHTML: `window.__USE_SSR__=true; window.__INITIAL_DATA__ ={};` }),
+          initialData: () => h('script', {
+            innerHTML: `window.__USE_SSR__=true; window.__INITIAL_DATA__ =${JSON.stringify(store.state.value)};`
+          }),
           cssInject: () => injectCss,
           jsInject: () => injectScript
         }
@@ -52,6 +57,7 @@ const serverRender = async (req, config) => {
 
   app.use(router)
   app.use(store)
+  app.use(head)
   await router.isReady()
 
   window.__VUE_APP__ = app

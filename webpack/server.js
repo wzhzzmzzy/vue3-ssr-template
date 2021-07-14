@@ -27,7 +27,6 @@ const getServerWebpack = chain => {
       whitelist: [/\.(css|less|sass|scss)$/],
       modulesDir: [
         path.join(getCwd(), './node_modules'),
-        path.resolve(getCwd(), '../node_modules')
       ]
     })
   ]);
@@ -37,7 +36,9 @@ const getServerWebpack = chain => {
   });
 
   chain.plugin('define').use(webpack.DefinePlugin, [{
-    __isBrowser__: false
+    __isBrowser__: false,
+    __VUE_OPTIONS_API__: false,
+    __VUE_PROD_DEVTOOLS__: false
   }]);
 
   return chain.toConfig()

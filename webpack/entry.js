@@ -10,10 +10,11 @@ const webpackStatsOption = {
   children: false, // 添加 children 信息
   chunks: false, // 添加 chunk 信息（设置为 `false` 能允许较少的冗长输出）
   colors: true, // 以不同颜色区分构建信息
-  modules: false, // 添加构建模块信息
+  modules: true, // 添加构建模块信息
+  moduleTrace: true,
   errorDetails: true,
-  warnings: false,
-  entrypoints: false
+  warnings: true,
+  entrypoints: true
 }
 
 const webpackPromisify = promisify(webpack)
@@ -44,7 +45,7 @@ const startClientServer = async webpackConfig => {
 
 const startClientBuild = async (webpackConfig) => {
   const stats = await webpackPromisify(webpackConfig)
-  console.log('[client]', stats.toString(webpackStatsOption))
+  console.log(stats.toString(webpackStatsOption))
 }
 
 const startServerBuild = async (webpackConfig) => {

@@ -2,8 +2,10 @@ function getConfig () {
   const chunkName = 'Demo';
   const isDev = process.env.NODE_ENV !== 'production'
   const faviconPath = 'assets/favicon.ico';
+  const mode = process.env.APP_MODE === 'csr' ? 'csr' : 'ssr';
 
   return {
+    mode,
     isDev,
     faviconPath,
     serverPort: 8000,

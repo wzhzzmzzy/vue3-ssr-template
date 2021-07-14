@@ -17,6 +17,7 @@ async function createServer() {
   for (const middleware of proxyMiddlewaresArr) {
     app.use(middleware)
   }
+
   app.get('*', render);
 
   app.use((err, req, res, next) => {

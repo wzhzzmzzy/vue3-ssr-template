@@ -1,5 +1,6 @@
 const path = require('path');
 const { renderToString } = require('@vue/server-renderer');
+const { rednerHeadToString, renderHeadToString } = require('@vueuse/head');
 const { getCwd } = require('../utils');
 const config = require('../config');
 
@@ -11,9 +12,11 @@ async function render(req, res) {
     delete require.cache[serverBundle];
   }
   const serverRender = require(serverBundle).default;
-  const serverRes = await serverRender(req, config)
+  const serverRes = await serverRender(req, config);
   const html = await renderToString(serverRes);
-  res.type('html').status(200).send(html)
+  const { headTags } = renderHeadToString(serverRes.config.globalProperties.$head);
+  // res.type('html').status(200).send(html);
+  res.type('html').status(200).send(html.replace('<!-- head-outlet -->', headTags))
 }
 
 module.exports = render;

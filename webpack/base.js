@@ -9,21 +9,6 @@ const loadModule = require.resolve;
 const getBaseConfig = (chain, isServer) => {
   const mode = process.env.NODE_ENV;
   const isDev = process.env.NODE_ENV !== 'production'
-  const moduleFileExtensions = [
-    '.web.mjs',
-    '.mjs',
-    '.web.js',
-    '.js',
-    '.web.ts',
-    '.ts',
-    '.web.tsx',
-    '.tsx',
-    '.json',
-    '.web.jsx',
-    '.jsx',
-    '.vue',
-    '.css'
-  ]
   const vueLoaderOptions = {
     babelParserPlugins: ['jsx', 'classProperties', 'decorators-legacy']
   }
@@ -47,8 +32,6 @@ const getBaseConfig = (chain, isServer) => {
     .when(isDev, chain => {
       chain.add(path.resolve(__dirname, '../node_modules'))
     })
-    .end()
-    .extensions.merge(moduleFileExtensions)
     .end()
 
   chain.resolve.alias
